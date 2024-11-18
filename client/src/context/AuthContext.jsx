@@ -1,5 +1,6 @@
 import { createContext , useCallback, useState } from "react";
 import { postRequest } from "../utils/services";
+import { baseUrl } from "../utils/services";
 
 export const AuthContext = createContext();
 
@@ -12,7 +13,7 @@ export const AuthContextProvider=({ children }) => {
         email:"",
         password:"",
     });
-    console.log("registerInfo" ,registerInfo);
+    console.log("Userr" ,user);
     const updateRegisterInfo=useCallback((info)=>{
         setRegisterInfo(info);
     },[]);
