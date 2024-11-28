@@ -98,24 +98,6 @@ const Signup = () => {
               type="password"
               placeholder='Confirm Password' />
           </div>
-          <div className='flex items-center my-4'>
-            <div className='flex items-center'>
-              <p>Male</p>
-              <input
-                type="checkbox"
-                checked={user.gender === "male"}
-                onChange={() => handleCheckbox("male")}
-                className="checkbox mx-2" />
-            </div>
-            <div className='flex items-center'>
-              <p>Female</p>
-              <input
-                type="checkbox"
-                checked={user.gender === "female"}
-                onChange={() => handleCheckbox("female")}
-                className="checkbox mx-2" />
-            </div>
-          </div>
           <p className='text-center my-2'>Already have an account? <Link to="/login"> login </Link></p>
           <div>
             <button type='submit' className='btn btn-block btn-sm mt-2 border border-slate-700'>Signup</button>

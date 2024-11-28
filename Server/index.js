@@ -16,13 +16,11 @@ const PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
-
 const corsOption = {
     origin: 'http://localhost:3000', // Adjust based on frontend URL
     credentials: true,
 };
 app.use(cors(corsOption));
-
 // Routes
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/message", messageRoute);

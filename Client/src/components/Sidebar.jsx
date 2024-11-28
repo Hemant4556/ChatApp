@@ -45,7 +45,7 @@ const Sidebar = () => {
         <div className='border-r border-slate-500 p-4 flex flex-col' style={{backgroundColor: 'rgba(8, 7, 7, 0.8)'}}>
             <div className=''>
                 <button onClick={logoutHandler} className='btn btn-sm '>Logout</button>
-            <span className='text-black ms-4 text-white' >{authUser?.fullName}</span>
+            <span className='text-black ms-4 text-white' >Hi {authUser?.fullName}</span>
             </div> 
             <form onSubmit={searchSubmitHandler} action="" className='flex items-center gap-2 mt-2 w-20 h-6'>
                 {/* <input
@@ -58,7 +58,7 @@ const Sidebar = () => {
                     <BiSearchAlt2 className='w-20 h-6 outline-none'/>
                 </button> */}
             </form>
-            <div className="divider px-3"></div> 
+            <div className="divider px-3" style={{color:'green'}}>Online Users</div> 
             <OtherUsers/> 
         </div>
     )
