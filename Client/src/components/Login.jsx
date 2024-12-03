@@ -36,8 +36,8 @@ const Login = () => {
     })
   }
   return (
-    <div className="min-w-96 mx-auto">
-  <div className='w-full p-6 rounded-lg shadow-lg bg-white bg-opacity-90 border border-gray-200'>
+    <div className="min-w-96 mx-auto mt-4">
+    <div className='w-full p-4 rounded-2xl shadow-lg bg-gradient-to-r from-blue-500 to-purple-500'>
     <h1 className='text-4xl font-bold text-center text-gray-800'>Welcome Back</h1>
     <form onSubmit={onSubmitHandler} action="">
       <div className='mt-4'>
@@ -58,7 +58,7 @@ const Login = () => {
           type="password"
           placeholder='Enter your password' />
       </div>
-      <p className='text-center my-4 text-sm text-gray-600'>Don't have an account? <Link to="/signup" className='text-blue-500 font-semibold'> Sign up </Link></p>
+      <p className='text-center my-4 text-sm text-red-600'>Don't have an account? <Link to="/signup" className='text-green-500 font-semibold'> Sign up </Link></p>
       <div>
         <button type="submit" className='w-full py-3 mt-4 text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition duration-200'>Login</button>
       </div>

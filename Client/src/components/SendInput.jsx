@@ -27,7 +27,7 @@ const SendInput = () => {
         setMessage("");
     }
     return (
-        <form onSubmit={onSubmitHandler} className='px-4 my-3'>
+        <form onSubmit={onSubmitHandler} className='px-9 my-2 w-[700]'>
             <div className='w-full relative'>
                 <input
                     value={message}
