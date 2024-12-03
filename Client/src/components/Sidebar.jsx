@@ -20,47 +20,43 @@ const Sidebar = () => {
 
     const logoutHandler = async () => {
         try {
-            const res = await axios.get(`${BASE_URL}/api/v1/user/logout`);
-            navigate("/login");
-            toast.success(res.data.message);
-            dispatch(setAuthUser(null));
-            dispatch(setMessages(null));
-            dispatch(setOtherUsers(null));
-            dispatch(setSelectedUser(null));
-        } catch (error) {   
+            const res = await axios.post(`${BASE_URL}/api/v1/user/logout`);
+    
+            if (res.status === 200) {
+                dispatch(setAuthUser (null));
+                dispatch(setMessages(null));
+                dispatch(setOtherUsers(null));
+                dispatch(setSelectedUser (null));
+                toast.success(res.data.message);
+    
+                navigate("/login");
+            } else {
+                toast.error("Logout failed. Please try again.");
+            }
+        } catch (error) {
             console.log(error);
-        }
-    }
-    const searchSubmitHandler = (e) => {
-        e.preventDefault();
-        const conversationUser = otherUsers?.find((user)=> user.fullName.toLowerCase().includes(search.toLowerCase()));
-        console.log(conversationUser);
-        if(conversationUser){
-            dispatch(setOtherUsers([conversationUser]));
-        }else{
-            toast.error("User not found!");
+            toast.error("An error occurred during logout. Please try again.");
         }
     }
     return (
-        <div className='border-r border-slate-500 p-4 flex flex-col' style={{backgroundColor: 'rgba(8, 7, 7, 0.8)'}}>
-            <div className=''>
-                <button onClick={logoutHandler} className='btn btn-sm '>Logout</button>
-            <span className='text-black ms-4 text-white' >Hi {authUser?.fullName}</span>
-            </div> 
-            <form onSubmit={searchSubmitHandler} action="" className='flex items-center gap-2 mt-2 w-20 h-6'>
-                {/* <input
-                    value={search}
-                    onChange={(e)=>setSearch(e.target.value)}
-                    className='input input-bordered rounded-md' type="text"
-                    placeholder='Search...'
-                />
-                <button type='submit' className='btn bg-zinc-700 text-white'>
-                    <BiSearchAlt2 className='w-20 h-6 outline-none'/>
-                </button> */}
-            </form>
-            <div className="divider px-3" style={{color:'green'}}>Online Users</div> 
-            <OtherUsers/> 
-        </div>
+        <div className='flex flex-col h-screen bg-gray-900 p-9'>
+    <div className='flex items-center justify-between border-b border-slate-600 pb-4 mb-4'>
+        <span className='text-white text-2xl font-bold'>Chat</span>
+        <button onClick={logoutHandler} className='btn btn-sm bg-red-600 hover:bg-red-700 text-white rounded-lg shadow-md transition duration-200'>
+            Logout
+        </button>
+    </div>
+    
+    <div className='flex items-center mt-4 mb-6'>
+        <span className='text-white text-xl font-medium'>Hi, {authUser  ?.fullName}</span>
+    </div>
+
+    <div className="divider my-4" style={{color:'green', fontWeight: 'bold'}}>Users</div> 
+
+    <div className='flex-grow overflow-y-auto bg-gray-800 rounded-lg shadow-lg p-9'>
+        <OtherUsers />
+    </div>
+</div>
     )
 }
 

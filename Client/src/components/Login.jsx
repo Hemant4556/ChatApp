@@ -37,39 +37,34 @@ const Login = () => {
   }
   return (
     <div className="min-w-96 mx-auto">
-      <div className='w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border border-gray-100'>
-        <h1 className='text-3xl font-bold text-center'>Sign In</h1>
-        <form onSubmit={onSubmitHandler} action="">
-
-          <div>
-            <label className='label p-2'>
-              <span className='text-base label-text'>Username</span>
-            </label>
-            <input
-              value={user.username}
-              onChange={(e) => setUser({ ...user, username: e.target.value })}
-              className='w-full input input-bordered h-10'
-              type="text"
-              placeholder='Username' />
-          </div>
-          <div>
-            <label className='label p-2'>
-              <span className='text-base label-text'>Password</span>
-            </label>
-            <input
-              value={user.password}
-              onChange={(e) => setUser({ ...user, password: e.target.value })}
-              className='w-full input input-bordered h-10'
-              type="password"
-              placeholder='Password' />
-          </div>
-          <p className='text-center my-2'>Don't have an account? <Link to="/signup"> signup </Link></p>
-          <div>
-            <button type="submit" className='btn btn-block btn-sm mt-2 border border-slate-700'>Login</button>
-          </div>
-        </form>
+  <div className='w-full p-6 rounded-lg shadow-lg bg-white bg-opacity-90 border border-gray-200'>
+    <h1 className='text-4xl font-bold text-center text-gray-800'>Welcome Back</h1>
+    <form onSubmit={onSubmitHandler} action="">
+      <div className='mt-4'>
+        <label className='block text-sm font-medium text-gray-700'>Username</label>
+        <input
+          value={user.username}
+          onChange={(e) => setUser ({ ...user, username: e.target.value })}
+          className='w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
+          type="text"
+          placeholder='Enter your username' />
       </div>
-    </div>
+      <div className='mt-4'>
+        <label className='block text-sm font-medium text-gray-700'>Password</label>
+        <input
+          value={user.password}
+          onChange={(e) => setUser ({ ...user, password: e.target.value })}
+          className='w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
+          type="password"
+          placeholder='Enter your password' />
+      </div>
+      <p className='text-center my-4 text-sm text-gray-600'>Don't have an account? <Link to="/signup" className='text-blue-500 font-semibold'> Sign up </Link></p>
+      <div>
+        <button type="submit" className='w-full py-3 mt-4 text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition duration-200'>Login</button>
+      </div>
+    </form>
+  </div>
+</div>
   )
 }
 
