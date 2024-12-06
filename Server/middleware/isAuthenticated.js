@@ -18,7 +18,8 @@ const isAuthenticated = (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ message: "Server error, could not authenticate token." });
+    return res.status(500).json({ message: 
+      "Server error, could not authenticate token." });
   }
 };
 
