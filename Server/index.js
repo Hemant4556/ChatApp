@@ -20,7 +20,17 @@ const corsOption = {
     origin: 'https://chatapp-9bob.onrender.com', // Adjust based on frontend URL
     credentials: true,
 };
-app.use(cors(corsOption));
+const allowedOrigins = ['https://chatapp-9bob.onrender.com'];
+
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  next();
+});
 // Routes
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/message", messageRoute);
