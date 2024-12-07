@@ -16,16 +16,11 @@ const PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
-const corsOptions = {
-  origin: 'https://chatapp-9bob.onrender.com', // Ensure the exact frontend origin
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  credentials: true, // Allow credentials if needed
+const corsOption = {
+    origin: 'https://chatapp-9bob.onrender.com', // Adjust based on frontend URL
+    credentials: true,
 };
-
-app.use(cors(corsOptions));
-
-// Optional: Automatically handle preflight `OPTIONS` requests
-app.options('*', cors(corsOptions));
+app.use(cors(corsOption));
 // Routes
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/message", messageRoute);
