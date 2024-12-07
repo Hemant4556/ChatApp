@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 const corsOption = {
-    origin: 'http://localhost:3000', // Adjust based on frontend URL
+    origin: 'https://chatapp-9bob.onrender.com/', // Adjust based on frontend URL
     credentials: true,
 };
 app.use(cors(corsOption));
@@ -40,7 +40,7 @@ app.use((err, req, res, next) => {
 server.listen(PORT, async () => {
     try {
         await connectDB();
-        console.log(`Server is running on port ${PORT}`);
+        console.log(`Server is running`);
     } catch (error) {
         console.error("Failed to connect to the database", error);
         process.exit(1); // Exit process if DB connection fails
