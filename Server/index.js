@@ -5,7 +5,7 @@ import connectDB from "./config/database.js";
 import userRoute from "./routes/userRoute.js";
 import messageRoute from "./routes/messageRoute.js";
 import cookieParser from "cookie-parser";
-import cors from "cors";
+// import cors from "cors";
 import { app, server } from "./socket/socket.js";
 
 dotenv.config(); // Load environment variables
@@ -16,21 +16,11 @@ const PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
-const corsOption = {
-    origin: 'https://chatapp-9bob.onrender.com', // Adjust based on frontend URL
-    credentials: true,
-};
-const allowedOrigins = ['https://chatapp-9bob.onrender.com'];
-
-app.use((req, res, next) => {
-  const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin)) {
-    res.setHeader('Access-Control-Allow-Origin', origin);
-  }
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  next();
-});
+// const corsOption = {
+//     origin: 'https://chatapp-9bob.onrender.com/*', // Adjust based on frontend URL
+//     credentials: true,
+// };
+// app.use(cors(corsOption));
 // Routes
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/message", messageRoute);
@@ -50,7 +40,7 @@ app.use((err, req, res, next) => {
 server.listen(PORT, async () => {
     try {
         await connectDB();
-        console.log(`Server is running`);
+        console.log(`Server is running on port ${PORT}`);
     } catch (error) {
         console.error("Failed to connect to the database", error);
         process.exit(1); // Exit process if DB connection fails
