@@ -5,7 +5,7 @@
 .package-lock.json
 .package.json
 # testing
-.env
+./env
 # production
 /build
 
